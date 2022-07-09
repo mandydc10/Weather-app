@@ -1,0 +1,164 @@
+h1 {
+  font-size: 100px;
+  font-weight: 800;
+  margin-left: 28px;
+  position: relative;
+  line-height: 40px;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 5px 25px 20px;
+}
+
+h3 {
+  margin-left: 39px;
+  font-size: 22px;
+  margin-top: 18px;
+  font-weight: 400;
+}
+
+p {
+  line-height: 8px;
+  font-size: 18px;
+}
+
+button {
+  background-color: #596aca;
+  color: white;
+  padding: 5px 20px;
+  border: 1px solid #596aca;
+  box-shadow: 3px 3px 5px rgba(37 29 89 / 0.2); /*3px 3px 5px*/
+  border-radius: 40px;
+  font-size: 13px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #596aca;
+}
+
+button:active {
+  background-color: #596aca;
+  box-shadow: 0 3px 5px #666;
+  transform: translateY(4px);
+}
+
+.main-content {
+  border: 1px solid #939aa9;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(37 29 89 / 0.2);
+  width: 80%;
+  max-width: 700px;
+  margin: 10px auto;
+  padding: 20px;
+  color: #596aca;
+  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
+}
+
+/* ------- Search Bar ------- */
+#search-bar {
+  text-align: right;
+  margin-right: 15px;
+  position: relative;
+}
+
+input[type="text"] {
+  border: 2px solid #939aa9;
+  box-shadow: 3px 3px 5px rgba(37 29 89 / 0.2);
+  border-radius: 40px;
+  padding: 5px 10px;
+  font-style: italic;
+  font-size: 13px;
+}
+
+input::placeholder {
+  color: #939aa9;
+}
+
+input[type="image"] {
+  border-left: 2px solid #939aa9;
+  border-radius: 10px;
+  width: 25px;
+  position: absolute;
+  margin-left: -30px;
+  margin-top: 5px;
+  padding-left: 3px;
+}
+
+/* ------ Today's forecast ------- */
+.current-city-weather {
+  text-align: left;
+}
+
+.inactive {
+  color: #939aa9;
+  font-weight: 500;
+}
+
+#current-city-weather-emoji {
+  width: 80px;
+  vertical-align: baseline;
+}
+
+#weather-description {
+  margin-left: 40px;
+}
+
+#celcius-fahrenheit-switch {
+  margin-left: 20px;
+}
+
+#celcius-fahrenheit,
+#celcius-fahrenheit-switch {
+  font-size: 30px;
+  vertical-align: top;
+}
+
+#celcius-fahrenheit-switch:hover {
+  cursor: pointer;
+}
+
+/* ------- Future forecast ------- */
+.five-day-forecast {
+  margin: 30px 15px 15px;
+  color: #939aa9;
+}
+
+.col {
+  margin: 5px;
+  box-shadow: 3px 3px 5px rgba(37 29 89 / 0.2);
+  background-color: #fdfefe;
+}
+
+.day-1,
+.day-2,
+.day-3,
+.day-4,
+.day-5 {
+  border: 2px solid #939aa9;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.day-title {
+  margin-left: 0;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 7px;
+}
+
+.forecast-emoji {
+  width: 50px;
+}
+
+.forecast-temp {
+  font-size: 16px;
+  margin: 10px 0;
+}
+.forecast.celcius-fahrenheit {
+  font-size: 10px;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather Forecaster</title>
+  </head>
+
+  <body>
+    <div class="co1ntainer main-content">
+      <form id="search-bar">
+        <input type="text" id="search-field" placeholder="Search city" />
+        <input
+          type="image"
+          src="media/magnifying glass_search_icon.png"
+          alt="Submit"
+          id="search-icon-submit-button"
+        />
+      </form>
+      <button id="my-location-button">Show My Location</button>
+
+      <div class="current-city-weather">
+        <h2 id="city-name">Perth, Australia</h2>
+        <h1 id="city-temperature">
+          <img
+            src="media/cloud_rainy_icon.png"
+            alt="raincloud"
+            id="current-city-weather-emoji"
+          />
+          <span id="temp">17</span
+          ><span id="celcius-fahrenheit-switch"
+            ><span id="celcius">ºC</span> |
+            <span id="fahrenheit" class="inactive">ºF</span></span
+          >
+        </h1>
+        <h3 id="time-day-date">Tuesday, 16:00</h3>
+        <p id="weather-description">Partly cloudy, with rain</p>
+      </div>
+
+      <div class="five-day-forecast row">
+        <div class="day-1 col">
+          <h3 class="day-title">Tues</h3>
+          <img
+            src="media/cloud_rainy_icon.png"
+            alt="raincloud"
+            class="forecast-emoji"
+          />
+          <p class="forecast-temp">
+            <span class="">17</span
+            ><span class="forecast celcius-fahrenheit">ºC</span> / 22<span
+              class="forecast celcius-fahrenheit"
+              >ºC</span
+            >
+          </p>
+        </div>
+        <div class="day-2 col">
+          <h3 class="day-title">Wed</h3>
+          <img
+            src="media/cloud_rainy_icon.png"
+            alt="raincloud"
+            class="forecast-emoji"
+          />
+          <p class="forecast-temp">
+            15<span class="forecast celcius-fahrenheit">ºC</span> / 21<span
+              class="forecast celcius-fahrenheit"
+              >ºC</span
+            >
+          </p>
+        </div>
+        <div class="day-3 col">
+          <h3 class="day-title">Thurs</h3>
+          <img
+            src="media/cloud_rainy_icon.png"
+            alt="raincloud"
+            class="forecast-emoji"
+          />
+          <p class="forecast-temp">
+            18<span class="forecast celcius-fahrenheit">ºC</span> / 23<span
+              class="forecast celcius-fahrenheit"
+              >ºC</span
+            >
+          </p>
+        </div>
+        <div class="day-4 col">
+          <h3 class="day-title">Fri</h3>
+          <img
+            src="media/cloud_rainy_icon.png"
+            alt="raincloud"
+            class="forecast-emoji"
+          />
+          <p class="forecast-temp">
+            19<span class="forecast celcius-fahrenheit">ºC</span> / 23<span
+              class="forecast celcius-fahrenheit"
+              >ºC</span
+            >
+          </p>
+        </div>
+        <div class="day-5 col">
+          <h3 class="day-title">Sat</h3>
+          <img
+            src="media/cloud_rainy_icon.png"
+            alt="raincloud"
+            class="forecast-emoji"
+          />
+          <p class="forecast-temp">
+            20<span class="forecast celcius-fahrenheit">ºC</span> / 24<span
+              class="forecast celcius-fahrenheit"
+              >ºC</span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="src/app.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
