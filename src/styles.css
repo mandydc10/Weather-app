@@ -107,7 +107,7 @@ input[type="image"] {
   vertical-align: baseline;
 }
 
-#weather-description {
+#weather-description, .weather {
   margin-left: 40px;
 }
 

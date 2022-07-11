@@ -45,23 +45,24 @@ function getWeatherDataFromGeocode(position) {
 
 /*---------------- Search Function ---------------*/
 //Prevent "submit" default functions and run API call with search query as parameter
-function getCityObject(event) {
+function getCityName(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-field");
   let city = searchInput.value;
 
   search(city);
+  searchInput.value = "";
 }
 
 function search(city) {
-  console.log(city);
   let apiUrl = `${apiBase}q=${city}&units=${units}&appid=${apiKey}`;
 
-  axios.get(`${apiUrl}`).then(getWeatherDataFromCityName);
+  axios.get(`${apiUrl}`).then(getWeatherDataFromCityCoords);
+  
 }
 
 //Get coordinates of search city and run new API call for weather data 
-function getWeatherDataFromCityName(response) {
+function getWeatherDataFromCityCoords(response) {
   let lat = response.data.coord.lat;
   let lon = response.data.coord.lon;
   let apiUrl = `${apiBase}lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
@@ -72,6 +73,7 @@ function getWeatherDataFromCityName(response) {
 /*-------------- Update Current Weather --------------*/
 // Update main weather elements with live weather data
 function updateCurrentWeather(response) {
+  console.log(response);
   let cityHeader = document.querySelector("#city-name");
   let locationName = response.data.name;
   let locationCountry = response.data.sys.country;
@@ -82,6 +84,7 @@ function updateCurrentWeather(response) {
   let icon = response.data.weather[0].icon;
   let celsiusElement = document.querySelector("#celsius");
   let fahrenheitElement = document.querySelector("#fahrenheit");
+  let windElement = document.querySelector("#wind");
 
   celsiusTemperature = response.data.main.temp;
 
@@ -91,6 +94,7 @@ function updateCurrentWeather(response) {
   cityHeader.innerHTML = `${locationName}, ${locationCountry}`;
   celsiusElement.classList.remove("inactive");
   fahrenheitElement.classList.add("inactive");
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
 /*------- Temperature Units Conversion  -----*/
@@ -127,7 +131,7 @@ search("Perth");
 
 // Run Search
 let searchBar = document.querySelector("#search-bar");
-searchBar.addEventListener("submit", getCityObject);
+searchBar.addEventListener("submit", getCityName);
 
 // Run my Location button
 let button = document.querySelector("#my-location-button");
