@@ -50,11 +50,12 @@ function getWeatherDataFromGeocode(position) {
 
 // Update main weather elements with live weather data
 function updateCurrentWeather(response) {
+  console.log(response.data.main.temp);
   let cityHeader = document.querySelector("#city-name");
   let locationName = response.data.name;
   let locationCountry = response.data.sys.country;
   let temperature = document.querySelector("#temp");
-  let locationTemp = `${Math.round(response.data.main.temp)}°C`;
+  let locationTemp = `${Math.round(response.data.main.temp)}`;
   let weatherDescriptionElement = document.querySelector("#weather-description");
   let weatherDescription = response.data.weather[0].main;
  
