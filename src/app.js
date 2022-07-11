@@ -75,6 +75,8 @@ function updateCurrentWeather(response) {
   let weatherDescription = response.data.weather[0].main;
   let iconElement = document.querySelector("#current-city-weather-emoji");
   let icon = response.data.weather[0].icon;
+  let celciusElement = document.querySelector("#celcius");
+  let fahrenheitElement = document.querySelector("#fahrenheit");
 
   celciusTemperature = response.data.main.temp;
 
@@ -82,9 +84,11 @@ function updateCurrentWeather(response) {
   temperatureElement.innerHTML = `${Math.round(celciusTemperature)}`;
   weatherDescriptionElement.innerHTML = `${weatherDescription}`;
   cityHeader.innerHTML = `${locationName}, ${locationCountry}`;
+  celciusElement.classList.remove("inactive");
+  fahrenheitElement.classList.add("inactive");
 }
 
-/*------- Temperature Units Conversion Functions -----*/
+/*------- Temperature Units Conversion  -----*/
 //Change from celcius to fahrenheit on click
 function convertToFahrenheit() {
   let tempElement = document.querySelector("#temp");
@@ -94,7 +98,7 @@ function convertToFahrenheit() {
 
   fahrenheitElement.classList.remove("inactive");
   celciusElement.classList.add("inactive");
-  tempElement.innerHTML = Math.round(fahrenheitTemperature); /*(x°F − 32) × 5/9 = °C */
+  tempElement.innerHTML = Math.round(fahrenheitTemperature); /* ?"(x°F − 32) × 5/9 = °C */
 }
 
 //Change from fahrenheit to celcius on click
