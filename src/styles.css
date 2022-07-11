@@ -47,12 +47,15 @@ button:active {
   transform: translateY(4px);
 }
 
+.container {
+  width: 80%;
+  max-width: 700px;
+}
+
 .main-content {
   border: 1px solid #939aa9;
   border-radius: 5px;
   box-shadow: 3px 3px 5px rgba(37 29 89 / 0.2);
-  width: 80%;
-  max-width: 700px;
   margin: 10px auto;
   padding: 20px;
   color: #596aca;
@@ -161,4 +164,11 @@ input[type="image"] {
 }
 .forecast.celcius-fahrenheit {
   font-size: 10px;
+}
+
+#github-link {
+  margin-top: 15px;
+  text-align: right;
+  font-family:'Courier New', Courier, monospace;
+  font-size: 14px;
 }

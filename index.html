@@ -17,109 +17,112 @@
   </head>
 
   <body>
-    <div class="co1ntainer main-content">
-      <form id="search-bar">
-        <input type="text" id="search-field" placeholder="Search city" />
-        <input
-          type="image"
-          src="media/magnifying glass_search_icon.png"
-          alt="Submit"
-          id="search-icon-submit-button"
-        />
-      </form>
-      <button id="my-location-button">Show My Location</button>
+    <div class="container">
+      <div class="main-content">
+        <form id="search-bar">
+          <input type="text" id="search-field" placeholder="Search city" />
+          <input
+            type="image"
+            src="media/magnifying glass_search_icon.png"
+            alt="Submit"
+            id="search-icon-submit-button"
+          />
+        </form>
+        <button id="my-location-button">Show My Location</button>
 
-      <div class="current-city-weather">
-        <h2 id="city-name"></h2>
-        <h1 id="city-temperature">
-          <img
-            src="media/cloud_rainy_icon.png"
-            alt="raincloud"
-            id="current-city-weather-emoji"
-          />
-          <span id="temp">17</span
-          ><span id="celcius-fahrenheit-switch"
-            ><span id="celcius">ºC</span> |
-            <span id="fahrenheit" class="inactive">ºF</span></span
-          >
-        </h1>
-        <h3 id="time-day-date">Tuesday, 16:00</h3>
-        <p id="weather-description">Partly cloudy, with rain</p>
-      </div>
+        <div class="current-city-weather">
+          <h2 id="city-name"></h2>
+          <h1 id="city-temperature">
+            <img
+              src="media/cloud_rainy_icon.png"
+              alt="raincloud"
+              id="current-city-weather-emoji"
+            />
+            <span id="temp">17</span
+            ><span id="celcius-fahrenheit-switch"
+              ><span id="celcius">ºC</span> |
+              <span id="fahrenheit" class="inactive">ºF</span></span
+            >
+          </h1>
+          <h3 id="time-day-date">Tuesday, 16:00</h3>
+          <p id="weather-description">Partly cloudy, with rain</p>
+        </div>
 
-      <div class="five-day-forecast row">
-        <div class="day-1 col">
-          <h3 class="day-title">Tues</h3>
-          <img
-            src="media/cloud_rainy_icon.png"
-            alt="raincloud"
-            class="forecast-emoji"
-          />
-          <p class="forecast-temp">
-            <span class="">17</span
-            ><span class="forecast celcius-fahrenheit">ºC</span> / 22<span
-              class="forecast celcius-fahrenheit"
-              >ºC</span
-            >
-          </p>
-        </div>
-        <div class="day-2 col">
-          <h3 class="day-title">Wed</h3>
-          <img
-            src="media/cloud_rainy_icon.png"
-            alt="raincloud"
-            class="forecast-emoji"
-          />
-          <p class="forecast-temp">
-            15<span class="forecast celcius-fahrenheit">ºC</span> / 21<span
-              class="forecast celcius-fahrenheit"
-              >ºC</span
-            >
-          </p>
-        </div>
-        <div class="day-3 col">
-          <h3 class="day-title">Thurs</h3>
-          <img
-            src="media/cloud_rainy_icon.png"
-            alt="raincloud"
-            class="forecast-emoji"
-          />
-          <p class="forecast-temp">
-            18<span class="forecast celcius-fahrenheit">ºC</span> / 23<span
-              class="forecast celcius-fahrenheit"
-              >ºC</span
-            >
-          </p>
-        </div>
-        <div class="day-4 col">
-          <h3 class="day-title">Fri</h3>
-          <img
-            src="media/cloud_rainy_icon.png"
-            alt="raincloud"
-            class="forecast-emoji"
-          />
-          <p class="forecast-temp">
-            19<span class="forecast celcius-fahrenheit">ºC</span> / 23<span
-              class="forecast celcius-fahrenheit"
-              >ºC</span
-            >
-          </p>
-        </div>
-        <div class="day-5 col">
-          <h3 class="day-title">Sat</h3>
-          <img
-            src="media/cloud_rainy_icon.png"
-            alt="raincloud"
-            class="forecast-emoji"
-          />
-          <p class="forecast-temp">
-            20<span class="forecast celcius-fahrenheit">ºC</span> / 24<span
-              class="forecast celcius-fahrenheit"
-              >ºC</span
-            >
-          </p>
+        <div class="five-day-forecast row">
+          <div class="day-1 col">
+            <h3 class="day-title">Tues</h3>
+            <img
+              src="media/cloud_rainy_icon.png"
+              alt="raincloud"
+              class="forecast-emoji"
+            />
+            <p class="forecast-temp">
+              <span class="">17</span
+              ><span class="forecast celcius-fahrenheit">ºC</span> / 22<span
+                class="forecast celcius-fahrenheit"
+                >ºC</span
+              >
+            </p>
+          </div>
+          <div class="day-2 col">
+            <h3 class="day-title">Wed</h3>
+            <img
+              src="media/cloud_rainy_icon.png"
+              alt="raincloud"
+              class="forecast-emoji"
+            />
+            <p class="forecast-temp">
+              15<span class="forecast celcius-fahrenheit">ºC</span> / 21<span
+                class="forecast celcius-fahrenheit"
+                >ºC</span
+              >
+            </p>
+          </div>
+          <div class="day-3 col">
+            <h3 class="day-title">Thurs</h3>
+            <img
+              src="media/cloud_rainy_icon.png"
+              alt="raincloud"
+              class="forecast-emoji"
+            />
+            <p class="forecast-temp">
+              18<span class="forecast celcius-fahrenheit">ºC</span> / 23<span
+                class="forecast celcius-fahrenheit"
+                >ºC</span
+              >
+            </p>
+          </div>
+          <div class="day-4 col">
+            <h3 class="day-title">Fri</h3>
+            <img
+              src="media/cloud_rainy_icon.png"
+              alt="raincloud"
+              class="forecast-emoji"
+            />
+            <p class="forecast-temp">
+              19<span class="forecast celcius-fahrenheit">ºC</span> / 23<span
+                class="forecast celcius-fahrenheit"
+                >ºC</span
+              >
+            </p>
+          </div>
+          <div class="day-5 col">
+            <h3 class="day-title">Sat</h3>
+            <img
+              src="media/cloud_rainy_icon.png"
+              alt="raincloud"
+              class="forecast-emoji"
+            />
+            <p class="forecast-temp">
+              20<span class="forecast celcius-fahrenheit">ºC</span> / 24<span
+                class="forecast celcius-fahrenheit"
+                >ºC</span
+              >
+            </p>
+          </div>
         </div>
       </div>
+      <p id="github-link"><a href="https://github.com/mandydc10/Weather-app">Open-source code</a> by Amanda Cook</p>
     </div>
 
     <!-- JavaScript Bundle with Popper -->
