@@ -111,17 +111,17 @@ input[type="image"] {
   margin-left: 40px;
 }
 
-#celcius-fahrenheit-switch {
+#celsius-fahrenheit-switch {
   margin-left: 20px;
 }
 
-#celcius-fahrenheit,
-#celcius-fahrenheit-switch {
+#celsius-fahrenheit,
+#celsius-fahrenheit-switch {
   font-size: 30px;
   vertical-align: top;
 }
 
-#celcius-fahrenheit-switch:hover {
+#celsius-fahrenheit-switch:hover {
   cursor: pointer;
 }
 
@@ -162,7 +162,7 @@ input[type="image"] {
   font-size: 16px;
   margin: 10px 0;
 }
-.forecast.celcius-fahrenheit {
+.forecast.celsius-fahrenheit {
   font-size: 10px;
 }
 

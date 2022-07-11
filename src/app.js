@@ -75,48 +75,48 @@ function updateCurrentWeather(response) {
   let weatherDescription = response.data.weather[0].main;
   let iconElement = document.querySelector("#current-city-weather-emoji");
   let icon = response.data.weather[0].icon;
-  let celciusElement = document.querySelector("#celcius");
+  let celsiusElement = document.querySelector("#celsius");
   let fahrenheitElement = document.querySelector("#fahrenheit");
 
-  celciusTemperature = response.data.main.temp;
+  celsiusTemperature = response.data.main.temp;
 
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
-  temperatureElement.innerHTML = `${Math.round(celciusTemperature)}`;
+  temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}`;
   weatherDescriptionElement.innerHTML = `${weatherDescription}`;
   cityHeader.innerHTML = `${locationName}, ${locationCountry}`;
-  celciusElement.classList.remove("inactive");
+  celsiusElement.classList.remove("inactive");
   fahrenheitElement.classList.add("inactive");
 }
 
 /*------- Temperature Units Conversion  -----*/
-//Change from celcius to fahrenheit on click
+//Change from celsius to fahrenheit on click
 function convertToFahrenheit() {
   let tempElement = document.querySelector("#temp");
-  let celciusElement = document.querySelector("#celcius");
+  let celsiusElement = document.querySelector("#celsius");
   let fahrenheitElement = document.querySelector("#fahrenheit");
-  let fahrenheitTemperature = (celciusTemperature * 9) / 5 +32;
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 +32;
 
   fahrenheitElement.classList.remove("inactive");
-  celciusElement.classList.add("inactive");
+  celsiusElement.classList.add("inactive");
   tempElement.innerHTML = Math.round(fahrenheitTemperature); /* ?"(x°F − 32) × 5/9 = °C */
 }
 
-//Change from fahrenheit to celcius on click
-function convertToCelcius() {
+//Change from fahrenheit to celsius on click
+function convertTocelsius() {
   let tempElement = document.querySelector("#temp");
-  let celciusElement = document.querySelector("#celcius");
+  let celsiusElement = document.querySelector("#celsius");
   let fahrenheitElement = document.querySelector("#fahrenheit");
 
-  celciusElement.classList.remove("inactive");
+  celsiusElement.classList.remove("inactive");
   fahrenheitElement.classList.add("inactive");
-  tempElement.innerHTML = Math.round(celciusTemperature);
+  tempElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 // Global variables  
 let apiKey = "57f68c3670fb17e844897ccb04baf20f";
 let units = "metric";
 let apiBase = "https://api.openweathermap.org/data/2.5/weather?";
-let celciusTemperature = null;
+let celsiusTemperature = null;
 
 // Run Search
 let searchBar = document.querySelector("#search-bar");
@@ -128,7 +128,7 @@ button.addEventListener("click", getUserLocation);
 
 // Run units conversion
 fahrenheit.addEventListener("click", convertToFahrenheit);
-celcius.addEventListener("click", convertToCelcius);
+celsius.addEventListener("click", convertTocelsius);
 
 /*----- Five Day Forecast ------*/
 // One Call API
