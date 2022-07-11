@@ -49,8 +49,14 @@ function getCityObject(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-field");
   let city = searchInput.value;
+
+  search(city);
+}
+
+function search(city) {
+  console.log(city);
   let apiUrl = `${apiBase}q=${city}&units=${units}&appid=${apiKey}`;
-  
+
   axios.get(`${apiUrl}`).then(getWeatherDataFromCityName);
 }
 
@@ -66,7 +72,6 @@ function getWeatherDataFromCityName(response) {
 /*-------------- Update Current Weather --------------*/
 // Update main weather elements with live weather data
 function updateCurrentWeather(response) {
-  console.log(response);
   let cityHeader = document.querySelector("#city-name");
   let locationName = response.data.name;
   let locationCountry = response.data.sys.country;
@@ -117,6 +122,8 @@ let apiKey = "57f68c3670fb17e844897ccb04baf20f";
 let units = "metric";
 let apiBase = "https://api.openweathermap.org/data/2.5/weather?";
 let celsiusTemperature = null;
+
+search("Perth");
 
 // Run Search
 let searchBar = document.querySelector("#search-bar");
