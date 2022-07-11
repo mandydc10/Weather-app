@@ -50,7 +50,7 @@ function getWeatherDataFromGeocode(position) {
 
 // Update main weather elements with live weather data
 function updateCurrentWeather(response) {
-  console.log(response.data.main.temp);
+  console.log(response);
   let cityHeader = document.querySelector("#city-name");
   let locationName = response.data.name;
   let locationCountry = response.data.sys.country;
@@ -58,7 +58,11 @@ function updateCurrentWeather(response) {
   let locationTemp = `${Math.round(response.data.main.temp)}`;
   let weatherDescriptionElement = document.querySelector("#weather-description");
   let weatherDescription = response.data.weather[0].main;
+  let iconElement = document.querySelector("#current-city-weather-emoji");
+  let icon = response.data.weather[0].icon;
+
  
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
   temperature.innerHTML = locationTemp;
   weatherDescriptionElement.innerHTML = `${weatherDescription}`;
   cityHeader.innerHTML = `${locationName}, ${locationCountry}`;
