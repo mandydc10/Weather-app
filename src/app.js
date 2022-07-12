@@ -38,7 +38,7 @@ function getUserLocation() {
 function getWeatherDataFromGeocode(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `${apiBase}lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `${apiBase}weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
   
   axios.get(`${apiUrl}`).then(updateCurrentWeather);
 }
@@ -55,7 +55,7 @@ function getCityName(event) {
 }
 
 function search(city) {
-  let apiUrl = `${apiBase}q=${city}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `${apiBase}weather?q=${city}&units=${units}&appid=${apiKey}`;
 
   axios.get(`${apiUrl}`).then(getWeatherDataFromCityCoords);
   
@@ -65,15 +65,16 @@ function search(city) {
 function getWeatherDataFromCityCoords(response) {
   let lat = response.data.coord.lat;
   let lon = response.data.coord.lon;
-  let apiUrl = `${apiBase}lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `${apiBase}weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  let apiOneCallUrl = `${apiBase}onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=${units}&appid=${apiKey}`;
  
   axios.get(`${apiUrl}`).then(updateCurrentWeather);
+  axios.get(`${apiOneCallUrl}`).then(populateForecast);
 }
 
 /*-------------- Update Current Weather --------------*/
 // Update main weather elements with live weather data
 function updateCurrentWeather(response) {
-  console.log(response);
   let cityHeader = document.querySelector("#city-name");
   let locationName = response.data.name;
   let locationCountry = response.data.sys.country;
@@ -124,7 +125,7 @@ function convertTocelsius() {
 // Global variables  
 let apiKey = "57f68c3670fb17e844897ccb04baf20f";
 let units = "metric";
-let apiBase = "https://api.openweathermap.org/data/2.5/weather?";
+let apiBase = "https://api.openweathermap.org/data/2.5/";
 let celsiusTemperature = null;
 
 search("Perth");
@@ -142,6 +143,39 @@ fahrenheit.addEventListener("click", convertToFahrenheit);
 celsius.addEventListener("click", convertTocelsius);
 
 /*----- Five Day Forecast ------*/
-// One Call API
-// https://api.openweathermap.org/data/2.5/onecall?lat=20.7503&lon=-156.5003&exclude=minutely,hourly&units=metric&appid=57f68c3670fb17e844897ccb04baf20f
+// One Call API - https://api.openweathermap.org/data/2.5/onecall?lat=20.7503&lon=-156.5003&exclude=minutely,hourly&units=metric&appid=57f68c3670fb17e844897ccb04baf20f
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function populateForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#six-day-forecast");
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function(forecastDay, index) {
+    if(index< 5) {
+      forecastHTML = forecastHTML + `
+        <div class="col-2">
+          <h3 class="day-title">${formatDay(forecastDay.dt)}</h3>
+          <img
+            src="media/cloud_rainy_icon.png"
+            alt="raincloud"
+            class="forecast-emoji"
+          />
+          <p class="forecast-temp">
+            <span class="forecast-min-temp">${Math.round(forecastDay.temp.min)}</span
+            > / <span class="forecast-max-temp">${Math.round(forecastDay.temp.max)}</span>
+          </p>
+        </div>`;
+            }
+    });
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+}

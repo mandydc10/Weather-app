@@ -126,22 +126,15 @@ input[type="image"] {
 }
 
 /* ------- Future forecast ------- */
-.five-day-forecast {
+.six-day-forecast {
   margin: 30px 15px 15px;
   color: #939aa9;
 }
 
-.col {
+.col-2 {
   margin: 5px;
   box-shadow: 3px 3px 5px rgba(37 29 89 / 0.2);
   background-color: #fdfefe;
-}
-
-.day-1,
-.day-2,
-.day-3,
-.day-4,
-.day-5 {
   border: 2px solid #939aa9;
   border-radius: 5px;
   text-align: center;
@@ -161,9 +154,6 @@ input[type="image"] {
 .forecast-temp {
   font-size: 16px;
   margin: 10px 0;
-}
-.forecast.celsius-fahrenheit {
-  font-size: 10px;
 }
 
 #github-link {
