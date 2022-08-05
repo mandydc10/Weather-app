@@ -88,8 +88,8 @@ function updateCurrentWeather(response) {
   let weatherDescription = response.data.weather[0].main;
   let iconElement = document.querySelector("#current-city-weather-emoji");
   let icon = response.data.weather[0].icon;
-  let celsiusElement = document.querySelector("#celsius");
-  let fahrenheitElement = document.querySelector("#fahrenheit");
+  // let celsiusElement = document.querySelector("#celsius");
+  // let fahrenheitElement = document.querySelector("#fahrenheit");
   let windElement = document.querySelector("#wind");
 
   celsiusTemperature = response.data.main.temp;
@@ -98,42 +98,42 @@ function updateCurrentWeather(response) {
   temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}`;
   weatherDescriptionElement.innerHTML = `${weatherDescription}`;
   cityHeader.innerHTML = `${locationName}, ${locationCountry}`;
-  celsiusElement.classList.remove("inactive");
-  fahrenheitElement.classList.add("inactive");
+  // celsiusElement.classList.remove("inactive");
+  // fahrenheitElement.classList.add("inactive");
   windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
 /*------- Temperature Units Conversion  -----*/
 //Change from celsius to fahrenheit on click
-function convertToFahrenheit() {
-  let tempElement = document.querySelectorAll(".temp");
-  console.log(tempElement);
-  let celsiusElement = document.querySelector("#celsius");
-  let fahrenheitElement = document.querySelector("#fahrenheit");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 +32;
+// function convertToFahrenheit() {
+//   let tempElement = document.querySelectorAll(".temp");
+//   console.log(tempElement);
+//   let celsiusElement = document.querySelector("#celsius");
+//   let fahrenheitElement = document.querySelector("#fahrenheit");
+//   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 +32;
 
-  fahrenheitElement.classList.remove("inactive");
-  celsiusElement.classList.add("inactive");
+//   fahrenheitElement.classList.remove("inactive");
+//   celsiusElement.classList.add("inactive");
   
   /* (x°F − 32) × 5/9 = °C */
-  tempElement.forEach(function(temp) {
-    temp.innerHTML = Math.round((temp.innerHTML * 9)  / 5 +32);
-  }) 
-}
+//   tempElement.forEach(function(temp) {
+//     temp.innerHTML = Math.round((temp.innerHTML * 9)  / 5 +32);
+//   }) 
+// }
 
 //Change from fahrenheit to celsius on click
-function convertTocelsius() {
-  let tempElement = document.querySelectorAll(".temp");
-  let celsiusElement = document.querySelector("#celsius");
-  let fahrenheitElement = document.querySelector("#fahrenheit");
+// function convertTocelsius() {
+//   let tempElement = document.querySelectorAll(".temp");
+//   let celsiusElement = document.querySelector("#celsius");
+//   let fahrenheitElement = document.querySelector("#fahrenheit");
 
-  celsiusElement.classList.remove("inactive");
-  fahrenheitElement.classList.add("inactive");
+//   celsiusElement.classList.remove("inactive");
+//   fahrenheitElement.classList.add("inactive");
   
-  tempElement.forEach(function(temp) {
-    temp.innerHTML = Math.round(celsiusTemperature);
-  }) 
-}
+//   tempElement.forEach(function(temp) {
+//     temp.innerHTML = Math.round(celsiusTemperature);
+//   }) 
+// }
 
 search("Perth");
 
@@ -146,8 +146,8 @@ let button = document.querySelector("#my-location-button");
 button.addEventListener("click", getUserLocation);
 
 // Run units conversion
-fahrenheit.addEventListener("click", convertToFahrenheit);
-celsius.addEventListener("click", convertTocelsius);
+// fahrenheit.addEventListener("click", convertToFahrenheit);
+// celsius.addEventListener("click", convertTocelsius);
 
 /*----- Five Day Forecast ------*/
 // One Call API - https://api.openweathermap.org/data/2.5/onecall?lat=20.7503&lon=-156.5003&exclude=minutely,hourly&units=metric&appid=57f68c3670fb17e844897ccb04baf20f
@@ -166,7 +166,6 @@ function populateForecast(response) {
   let forecastHTML = `<div class="row">`;
 
   forecast.forEach(function(forecastDay, index) {
-    // let celciusTemperatureMin = forecastDay.temp.min ****We are here!! trying to grab each forecast day min and max element to store original celcius value for temp conversions
     if(index< 5) {
       forecastHTML = forecastHTML + `
         <div class="col-2">
