@@ -49,7 +49,7 @@ button:active {
 
 .container {
   width: 80%;
-  max-width: 700px;
+  max-width: 800px;
 }
 
 .main-content {
@@ -127,8 +127,12 @@ input[type="image"] {
 
 /* ------- Future forecast ------- */
 .six-day-forecast {
-  margin: 30px 15px 15px;
   color: #939aa9;
+}
+
+.row {
+  justify-content: center;
+  margin: 50px 5px 5px;
 }
 
 .col-2 {
@@ -151,7 +155,7 @@ input[type="image"] {
   width: 50px;
 }
 
-.forecast-temp {
+.forecast-min .forecast-max {
   font-size: 16px;
   margin: 10px 0;
 }

@@ -1,3 +1,8 @@
+// Global variables  
+let apiKey = "57f68c3670fb17e844897ccb04baf20f";
+let units = "metric";
+let apiBase = "https://api.openweathermap.org/data/2.5/";
+
 /*------- Current date and time functions -------*/
 //Get current date/time and show day and time in header
 function displayDayInfo(now) {
@@ -22,7 +27,7 @@ function displayDayInfo(now) {
   let minutes = addZero(now.getMinutes());
 
   let timeDate = document.querySelector("#time-day-date");
-  timeDate.innerHTML = `${day} ${hours}:${minutes}`;
+  timeDate.innerHTML = `Updated ${day} ${hours}:${minutes}`;
 }
 
 let now = new Date();
@@ -78,7 +83,7 @@ function updateCurrentWeather(response) {
   let cityHeader = document.querySelector("#city-name");
   let locationName = response.data.name;
   let locationCountry = response.data.sys.country;
-  let temperatureElement = document.querySelector("#temp");
+  let temperatureElement = document.querySelector("#main-temp");
   let weatherDescriptionElement = document.querySelector("#weather-description");
   let weatherDescription = response.data.weather[0].main;
   let iconElement = document.querySelector("#current-city-weather-emoji");
@@ -89,7 +94,7 @@ function updateCurrentWeather(response) {
 
   celsiusTemperature = response.data.main.temp;
 
-  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+  iconElement.setAttribute("src", `media/${icon}.png`); /* http://openweathermap.org/img/wn/${icon}@2x.png */
   temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}`;
   weatherDescriptionElement.innerHTML = `${weatherDescription}`;
   cityHeader.innerHTML = `${locationName}, ${locationCountry}`;
@@ -101,32 +106,34 @@ function updateCurrentWeather(response) {
 /*------- Temperature Units Conversion  -----*/
 //Change from celsius to fahrenheit on click
 function convertToFahrenheit() {
-  let tempElement = document.querySelector("#temp");
+  let tempElement = document.querySelectorAll(".temp");
+  console.log(tempElement);
   let celsiusElement = document.querySelector("#celsius");
   let fahrenheitElement = document.querySelector("#fahrenheit");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 +32;
 
   fahrenheitElement.classList.remove("inactive");
   celsiusElement.classList.add("inactive");
-  tempElement.innerHTML = Math.round(fahrenheitTemperature); /* ?"(x°F − 32) × 5/9 = °C */
+  
+  /* (x°F − 32) × 5/9 = °C */
+  tempElement.forEach(function(temp) {
+    temp.innerHTML = Math.round((temp.innerHTML * 9)  / 5 +32);
+  }) 
 }
 
 //Change from fahrenheit to celsius on click
 function convertTocelsius() {
-  let tempElement = document.querySelector("#temp");
+  let tempElement = document.querySelectorAll(".temp");
   let celsiusElement = document.querySelector("#celsius");
   let fahrenheitElement = document.querySelector("#fahrenheit");
 
   celsiusElement.classList.remove("inactive");
   fahrenheitElement.classList.add("inactive");
-  tempElement.innerHTML = Math.round(celsiusTemperature);
+  
+  tempElement.forEach(function(temp) {
+    temp.innerHTML = Math.round(celsiusTemperature);
+  }) 
 }
-
-// Global variables  
-let apiKey = "57f68c3670fb17e844897ccb04baf20f";
-let units = "metric";
-let apiBase = "https://api.openweathermap.org/data/2.5/";
-let celsiusTemperature = null;
 
 search("Perth");
 
@@ -154,24 +161,24 @@ function formatDay(timestamp) {
 }
 
 function populateForecast(response) {
-  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#six-day-forecast");
   let forecastHTML = `<div class="row">`;
 
   forecast.forEach(function(forecastDay, index) {
+    // let celciusTemperatureMin = forecastDay.temp.min ****We are here!! trying to grab each forecast day min and max element to store original celcius value for temp conversions
     if(index< 5) {
       forecastHTML = forecastHTML + `
         <div class="col-2">
           <h3 class="day-title">${formatDay(forecastDay.dt)}</h3>
           <img
-            src="media/cloud_rainy_icon.png"
-            alt="raincloud"
+            src="media/${forecastDay.weather[0].icon}.png"
+            alt="weather-icon"
             class="forecast-emoji"
           />
           <p class="forecast-temp">
-            <span class="forecast-min-temp">${Math.round(forecastDay.temp.min)}</span
-            > / <span class="forecast-max-temp">${Math.round(forecastDay.temp.max)}</span>
+            <span class="forecast-min temp">${Math.round(forecastDay.temp.min)}</span
+            > / <span class="forecast-max temp">${Math.round(forecastDay.temp.max)}</span>
           </p>
         </div>`;
             }
