@@ -88,8 +88,8 @@ function updateCurrentWeather(response) {
   let weatherDescription = response.data.weather[0].main;
   let iconElement = document.querySelector("#current-city-weather-emoji");
   let icon = response.data.weather[0].icon;
-  // let celsiusElement = document.querySelector("#celsius");
-  // let fahrenheitElement = document.querySelector("#fahrenheit");
+  let celsiusElement = document.querySelector("#celsius");
+  let fahrenheitElement = document.querySelector("#fahrenheit");
   let windElement = document.querySelector("#wind");
 
   celsiusTemperature = response.data.main.temp;
@@ -98,8 +98,8 @@ function updateCurrentWeather(response) {
   temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}`;
   weatherDescriptionElement.innerHTML = `${weatherDescription}`;
   cityHeader.innerHTML = `${locationName}, ${locationCountry}`;
-  // celsiusElement.classList.remove("inactive");
-  // fahrenheitElement.classList.add("inactive");
+  celsiusElement.classList.remove("inactive");
+  fahrenheitElement.classList.add("inactive");
   windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
@@ -124,16 +124,37 @@ function updateCurrentWeather(response) {
 //Change from fahrenheit to celsius on click
 // function convertTocelsius() {
 //   let tempElement = document.querySelectorAll(".temp");
-//   let celsiusElement = document.querySelector("#celsius");
-//   let fahrenheitElement = document.querySelector("#fahrenheit");
-
-//   celsiusElement.classList.remove("inactive");
-//   fahrenheitElement.classList.add("inactive");
+ 
   
 //   tempElement.forEach(function(temp) {
 //     temp.innerHTML = Math.round(celsiusTemperature);
 //   }) 
 // }
+
+function convertTemperature() {
+  let tempElement = document.querySelectorAll(".temp");
+  let celsiusElement = document.querySelector("#celsius");
+  let fahrenheitElement = document.querySelector("#fahrenheit");
+
+
+  if(tempElement.classList.contains("in-celsius")) {
+    tempElement.forEach(function(temp) {
+      celsiusElement.classList.add("inactive");
+      fahrenheitElement.classList.remove("inactive");
+      temp.classList.remove("in-celsius");
+      temp.innerHTML = Math.round((temp.innerHTML * 9)  / 5 +32);
+    })
+  } else {
+    if(!tempElement.classList.contains("in-celsius")) {
+      celsiusElement.classList.remove("inactive");
+      fahrenheitElement.classList.add("inactive");
+      tempElement.forEach(function(temp) {
+        temp.classList.add("in-celsius");
+        temp.innerHTML = Math.round((temp.innerHTML - 32) * 5 / 9);
+      })
+    }
+  }
+}
 
 search("Perth");
 
@@ -144,10 +165,11 @@ searchBar.addEventListener("submit", getCityName);
 // Run my Location button
 let button = document.querySelector("#my-location-button");
 button.addEventListener("click", getUserLocation);
+button.addEventListener("touch", getUserLocation);
 
 // Run units conversion
-// fahrenheit.addEventListener("click", convertToFahrenheit);
-// celsius.addEventListener("click", convertTocelsius);
+fahrenheit.addEventListener("click", convertTemperature);
+celsius.addEventListener("click", convertTemperature);
 
 /*----- Five Day Forecast ------*/
 // One Call API - https://api.openweathermap.org/data/2.5/onecall?lat=20.7503&lon=-156.5003&exclude=minutely,hourly&units=metric&appid=57f68c3670fb17e844897ccb04baf20f
@@ -166,7 +188,7 @@ function populateForecast(response) {
   let forecastHTML = `<div class="row">`;
 
   forecast.forEach(function(forecastDay, index) {
-    if(index< 5) {
+    if(index < 6  && index > 0) {
       forecastHTML = forecastHTML + `
         <div class="col-2">
           <h3 class="day-title">${formatDay(forecastDay.dt)}</h3>
@@ -176,8 +198,8 @@ function populateForecast(response) {
             class="forecast-emoji"
           />
           <p class="forecast-temp">
-            <span class="forecast-min temp">${Math.round(forecastDay.temp.min)}</span
-            > / <span class="forecast-max temp">${Math.round(forecastDay.temp.max)}</span>
+            <span class="forecast-min temp in-celsius">${Math.round(forecastDay.temp.min)}</span
+            > / <span class="forecast-max temp in-celcius">${Math.round(forecastDay.temp.max)}</span>
           </p>
         </div>`;
             }
