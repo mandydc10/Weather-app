@@ -121,9 +121,9 @@ input[type="image"] {
   vertical-align: top;
 }
 
-#celsius-fahrenheit-switch:hover {
+/* #celsius-fahrenheit-switch:hover {
   cursor: pointer;
-}
+} */
 
 /* ------- Future forecast ------- */
 .six-day-forecast {

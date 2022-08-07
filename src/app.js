@@ -88,8 +88,8 @@ function updateCurrentWeather(response) {
   let weatherDescription = response.data.weather[0].main;
   let iconElement = document.querySelector("#current-city-weather-emoji");
   let icon = response.data.weather[0].icon;
-  let celsiusElement = document.querySelector("#celsius");
-  let fahrenheitElement = document.querySelector("#fahrenheit");
+  // let celsiusElement = document.querySelector("#celsius");
+  // let fahrenheitElement = document.querySelector("#fahrenheit");
   let windElement = document.querySelector("#wind");
 
   celsiusTemperature = response.data.main.temp;
@@ -98,8 +98,8 @@ function updateCurrentWeather(response) {
   temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}`;
   weatherDescriptionElement.innerHTML = `${weatherDescription}`;
   cityHeader.innerHTML = `${locationName}, ${locationCountry}`;
-  celsiusElement.classList.remove("inactive");
-  fahrenheitElement.classList.add("inactive");
+  // celsiusElement.classList.remove("inactive");
+  // fahrenheitElement.classList.add("inactive");
   windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
@@ -131,30 +131,30 @@ function updateCurrentWeather(response) {
 //   }) 
 // }
 
-function convertTemperature() {
-  let tempElement = document.querySelectorAll(".temp");
-  let celsiusElement = document.querySelector("#celsius");
-  let fahrenheitElement = document.querySelector("#fahrenheit");
+// function convertTemperature() {
+//   let tempElement = document.querySelectorAll(".temp");
+//   let celsiusElement = document.querySelector("#celsius");
+//   let fahrenheitElement = document.querySelector("#fahrenheit");
 
 
-  if(tempElement.classList.contains("in-celsius")) {
-    tempElement.forEach(function(temp) {
-      celsiusElement.classList.add("inactive");
-      fahrenheitElement.classList.remove("inactive");
-      temp.classList.remove("in-celsius");
-      temp.innerHTML = Math.round((temp.innerHTML * 9)  / 5 +32);
-    })
-  } else {
-    if(!tempElement.classList.contains("in-celsius")) {
-      celsiusElement.classList.remove("inactive");
-      fahrenheitElement.classList.add("inactive");
-      tempElement.forEach(function(temp) {
-        temp.classList.add("in-celsius");
-        temp.innerHTML = Math.round((temp.innerHTML - 32) * 5 / 9);
-      })
-    }
-  }
-}
+//   if(tempElement.classList.contains("in-celsius")) {
+//     tempElement.forEach(function(temp) {
+//       celsiusElement.classList.add("inactive");
+//       fahrenheitElement.classList.remove("inactive");
+//       temp.classList.remove("in-celsius");
+//       temp.innerHTML = Math.round((temp.innerHTML * 9)  / 5 +32);
+//     })
+//   } else {
+//     if(!tempElement.classList.contains("in-celsius")) {
+//       celsiusElement.classList.remove("inactive");
+//       fahrenheitElement.classList.add("inactive");
+//       tempElement.forEach(function(temp) {
+//         temp.classList.add("in-celsius");
+//         temp.innerHTML = Math.round((temp.innerHTML - 32) * 5 / 9);
+//       })
+//     }
+//   }
+// }
 
 search("Perth");
 
@@ -165,11 +165,11 @@ searchBar.addEventListener("submit", getCityName);
 // Run my Location button
 let button = document.querySelector("#my-location-button");
 button.addEventListener("click", getUserLocation);
-button.addEventListener("touch", getUserLocation);
+// button.addEventListener("touch", getUserLocation);
 
 // Run units conversion
-fahrenheit.addEventListener("click", convertTemperature);
-celsius.addEventListener("click", convertTemperature);
+// fahrenheit.addEventListener("click", convertTemperature);
+// celsius.addEventListener("click", convertTemperature);
 
 /*----- Five Day Forecast ------*/
 // One Call API - https://api.openweathermap.org/data/2.5/onecall?lat=20.7503&lon=-156.5003&exclude=minutely,hourly&units=metric&appid=57f68c3670fb17e844897ccb04baf20f
