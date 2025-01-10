@@ -1,10 +1,9 @@
 // Global variables  
-// let apiKey = "57f68c3670fb17e844897ccb04baf20f";
 let units = "metric";
 let apiBase = "https://api.openweathermap.org/data/2.5/";
 
 function getAPIKey() {
-  apiKey = prompt("Please enter your API Key for OpenWeather (if you don't have one, you can get a free one here https://openweathermap.org/price#weather):");
+  apiKey = prompt("Please enter your API Key for OpenWeather (you can get a free one here https://openweathermap.org/price#weather):");
   return apiKey;
 }
 
