@@ -1,7 +1,15 @@
 // Global variables  
-let apiKey = "57f68c3670fb17e844897ccb04baf20f";
+// let apiKey = "57f68c3670fb17e844897ccb04baf20f";
 let units = "metric";
 let apiBase = "https://api.openweathermap.org/data/2.5/";
+
+function getAPIKey() {
+  apiKey = prompt("Please enter your API Key for OpenWeather (if you don't have one, you can get a free one here https://openweathermap.org/price#weather):");
+  return apiKey;
+}
+
+getAPIKey();
+
 
 /*------- Current date and time functions -------*/
 //Get current date/time and show day and time in header
@@ -44,7 +52,7 @@ function getWeatherDataFromGeocode(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiUrl = `${apiBase}weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
-  
+
   axios.get(`${apiUrl}`).then(updateCurrentWeather);
 }
 
@@ -63,7 +71,7 @@ function search(city) {
   let apiUrl = `${apiBase}weather?q=${city}&units=${units}&appid=${apiKey}`;
 
   axios.get(`${apiUrl}`).then(getWeatherDataFromCityCoords);
-  
+
 }
 
 //Get coordinates of search city and run new API call for weather data 
@@ -71,8 +79,8 @@ function getWeatherDataFromCityCoords(response) {
   let lat = response.data.coord.lat;
   let lon = response.data.coord.lon;
   let apiUrl = `${apiBase}weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
-  let apiOneCallUrl = `${apiBase}onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=${units}&appid=${apiKey}`;
- 
+  let apiOneCallUrl = `${apiBase}forecast?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=${units}&appid=${apiKey}`;
+
   axios.get(`${apiUrl}`).then(updateCurrentWeather);
   axios.get(`${apiOneCallUrl}`).then(populateForecast);
 }
@@ -114,8 +122,8 @@ function updateCurrentWeather(response) {
 
 //   fahrenheitElement.classList.remove("inactive");
 //   celsiusElement.classList.add("inactive");
-  
-  /* (x°F − 32) × 5/9 = °C */
+
+/* (x°F − 32) × 5/9 = °C */
 //   tempElement.forEach(function(temp) {
 //     temp.innerHTML = Math.round((temp.innerHTML * 9)  / 5 +32);
 //   }) 
@@ -124,8 +132,8 @@ function updateCurrentWeather(response) {
 //Change from fahrenheit to celsius on click
 // function convertTocelsius() {
 //   let tempElement = document.querySelectorAll(".temp");
- 
-  
+
+
 //   tempElement.forEach(function(temp) {
 //     temp.innerHTML = Math.round(celsiusTemperature);
 //   }) 
@@ -183,12 +191,14 @@ function formatDay(timestamp) {
 }
 
 function populateForecast(response) {
-  let forecast = response.data.daily;
-  let forecastElement = document.querySelector("#six-day-forecast");
+
+  let forecast = response.data.list;
+  let forecastElement = document.querySelector("#five-day-forecast");
   let forecastHTML = `<div class="row">`;
 
-  forecast.forEach(function(forecastDay, index) {
-    if(index < 6  && index > 0) {
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6 && index > 0) {
+      console.log(forecastDay);
       forecastHTML = forecastHTML + `
         <div class="col-2">
           <h3 class="day-title">${formatDay(forecastDay.dt)}</h3>
@@ -198,12 +208,11 @@ function populateForecast(response) {
             class="forecast-emoji"
           />
           <p class="forecast-temp">
-            <span class="forecast-min temp in-celsius">${Math.round(forecastDay.temp.min)}</span
-            > / <span class="forecast-max temp in-celcius">${Math.round(forecastDay.temp.max)}</span>
+          <span class="forecast-min temp in-celsius">${Math.round(forecastDay.main.temp_min)}</span> / <span class="forecast-max temp in-celcius">${Math.round(forecastDay.main.temp_max)}</span>
           </p>
         </div>`;
-            }
-    });
-    forecastHTML = forecastHTML + `</div>`;
-    forecastElement.innerHTML = forecastHTML;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }

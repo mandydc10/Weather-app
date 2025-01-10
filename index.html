@@ -1,67 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CSS only -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="src/styles.css" />
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>Weather Forecaster</title>
-  </head>
 
-  <body>
-    <div class="container">
-      <div class="main-content">
-        <form id="search-bar">
-          <input type="text" id="search-field" placeholder="Search city" />
-          <input
-            type="image"
-            src="media/magnifying glass_search_icon.png"
-            alt="Submit"
-            id="search-icon-submit-button"
-          />
-        </form>
-        <button id="my-location-button">Show My Location</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+  <link rel="stylesheet" href="src/styles.css" />
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>Weather Forecaster</title>
+</head>
 
-        <div class="current-city-weather">
-          <h2 id="city-name"></h2>
-          <h1 id="city-temperature">
-            <img
-              src="media/01d.png"
-              alt="weather"
-              id="current-city-weather-emoji"
-            />
-            <span class="temp" id="main-temp"></span
-            ><span class="in-celsius" id="celsius-fahrenheit-switch"
-              ><span id="celsius">ºC</span> 
-              <!-- |
+<body>
+  <div class="container">
+    <div class="main-content">
+      <form id="search-bar">
+        <input type="text" id="search-field" placeholder="Search city" />
+        <input type="image" src="media/magnifying glass_search_icon.png" alt="Submit" id="search-icon-submit-button" />
+      </form>
+      <button id="my-location-button">Show My Location</button>
+
+      <div class="current-city-weather">
+        <h2 id="city-name"></h2>
+        <h1 id="city-temperature">
+          <img src="media/01d.png" alt="weather" id="current-city-weather-emoji" />
+          <span class="temp" id="main-temp"></span><span class="in-celsius" id="celsius-fahrenheit-switch"><span
+              id="celsius">ºC</span>
+            <!-- |
               <span id="fahrenheit" class="inactive">ºF</span></span
             > -->
-          </h1>
-          <h3 id="time-day-date"></h3>
-          <p class="weather" id="weather-description"></p>
-          <p class="weather">Wind: <span id="wind"></span> km/hr</p>
-       </div>
-
-        <!-- Forecast HTML added via JS -->
-        <div id="six-day-forecast"></div>
+        </h1>
+        <h3 id="time-day-date"></h3>
+        <p class="weather" id="weather-description"></p>
+        <p class="weather">Wind: <span id="wind"></span> km/hr</p>
       </div>
-      <p id="github-link"><a href="https://github.com/mandydc10/Weather-app">Open-source code</a> by Amanda Cook</p>
-    </div>
 
-    <!-- JavaScript Bundle with Popper -->
-    <script src="src/app.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      <!-- Forecast HTML added via JS -->
+      <div id="five-day-forecast"></div>
+    </div>
+    <p id="github-link"><a href="https://github.com/mandydc10/Weather-app">Open-source code</a> by Amanda Cook</p>
+  </div>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="src/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
